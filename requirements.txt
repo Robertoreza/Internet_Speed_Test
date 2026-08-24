@@ -1,0 +1,45 @@
+# =============================================================================
+#  PULSE/10 · Internet Speed Benchmark Console — project requirements
+# -----------------------------------------------------------------------------
+#  This deliverable is a web application (Vite + React 18 + Tailwind CSS v4),
+#  so its dependencies are managed by npm, not pip. This file documents the
+#  exact dependency set; the live manifest is package.json.
+#
+#  REQUIRED RUNTIME
+#    Node.js >= 18.18        https://nodejs.org
+#
+#  REQUIRED AT TEST TIME
+#    An internet connection. Probes run against Cloudflare's speed endpoints
+#    (speed.cloudflare.com). If those are unreachable, the engine transparently
+#    falls back to a clearly flagged simulation model.
+#
+#  QUICK START
+#    npm install             # install everything below
+#    npm run dev             # local dev server (hot reload)
+#    npm run build           # production bundle -> dist/
+# =============================================================================
+
+# --- runtime dependencies (npm) ----------------------------------------------
+react@^18.2.0                # UI framework
+react-dom@^18.2.0            # DOM renderer
+
+# --- build toolchain (npm devDependencies) -----------------------------------
+vite@^6.3.5                  # bundler / dev server
+typescript@^5.7.0            # static type checking
+tailwindcss@^4.1.7           # utility-first CSS framework
+@vitejs/plugin-react@^4.3.4  # React fast-refresh integration for Vite
+@tailwindcss/vite@^4.1.7     # Tailwind CSS v4 Vite plugin
+
+# =============================================================================
+#  NOTE — Python desktop alternative
+# -----------------------------------------------------------------------------
+#  If you need this benchmark as a native Python GUI program instead, the
+#  equivalent stack installs via pip:
+#
+#    speedtest-cli==2.1.3     # speed measurements
+#    customtkinter==5.2.2     # modern tkinter-based GUI
+#    matplotlib==3.9.2        # download/upload graphing
+#
+#  The web build above reproduces the same workflow — 10 timed rounds, live
+#  progress, and a final throughput chart — with no local interpreter needed.
+# =============================================================================
