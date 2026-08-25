@@ -1,45 +1,24 @@
-# =============================================================================
-#  PULSE/10 · Internet Speed Benchmark Console — project requirements
-# -----------------------------------------------------------------------------
-#  This deliverable is a web application (Vite + React 18 + Tailwind CSS v4),
-#  so its dependencies are managed by npm, not pip. This file documents the
-#  exact dependency set; the live manifest is package.json.
+# ============================================================
+#  PULSE/10 — Internet Speed Benchmark (Python GUI)
+#  Requires Python 3.9+ · works on macOS / Linux / Windows
 #
-#  REQUIRED RUNTIME
-#    Node.js >= 18.18        https://nodejs.org
+#    pip install -r requirements.txt
+#    python speed_test.py
 #
-#  REQUIRED AT TEST TIME
-#    An internet connection. Probes run against Cloudflare's speed endpoints
-#    (speed.cloudflare.com). If those are unreachable, the engine transparently
-#    falls back to a clearly flagged simulation model.
-#
-#  QUICK START
-#    npm install             # install everything below
-#    npm run dev             # local dev server (hot reload)
-#    npm run build           # production bundle -> dist/
-# =============================================================================
+#  NOTE: tkinter ships with Python. If it is missing:
+#    Linux  -> sudo apt install python3-tk
+#    macOS  -> brew install python-tk   (Homebrew Python)
+# ============================================================
 
-# --- runtime dependencies (npm) ----------------------------------------------
-react@^18.2.0                # UI framework
-react-dom@^18.2.0            # DOM renderer
+# Measurement engine (Ookla speedtest.net bindings)
+speedtest-cli>=2.1.3
 
-# --- build toolchain (npm devDependencies) -----------------------------------
-vite@^6.3.5                  # bundler / dev server
-typescript@^5.7.0            # static type checking
-tailwindcss@^4.1.7           # utility-first CSS framework
-@vitejs/plugin-react@^4.3.4  # React fast-refresh integration for Vite
-@tailwindcss/vite@^4.1.7     # Tailwind CSS v4 Vite plugin
+# Graph: download/upload chart embedded in the GUI (pulls numpy)
+matplotlib>=3.8.0
 
-# =============================================================================
-#  NOTE — Python desktop alternative
-# -----------------------------------------------------------------------------
-#  If you need this benchmark as a native Python GUI program instead, the
-#  equivalent stack installs via pip:
-#
-#    speedtest-cli==2.1.3     # speed measurements
-#    customtkinter==5.2.2     # modern tkinter-based GUI
-#    matplotlib==3.9.2        # download/upload graphing
-#
-#  The web build above reproduces the same workflow — 10 timed rounds, live
-#  progress, and a final throughput chart — with no local interpreter needed.
-# =============================================================================
+# ------------------------------------------------------------
+# Optional, not required by speed_test.py:
+#   customtkinter>=5.2.2     # themed widgets if you restyle it
+# ------------------------------------------------------------
+# This repo also ships a browser build of the same benchmark
+# (see package.json) — that one is installed via npm, not pip.
